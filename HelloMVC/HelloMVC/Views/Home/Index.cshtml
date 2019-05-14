@@ -1,0 +1,88 @@
+﻿@model List<HelloMVC.Models.Car>
+@{
+    ViewBag.Title = "Index";
+    var value = 1000;
+}
+
+<p>My Razor value : @value.ToString("C")</p>
+<h1>@ViewBag.BobCreatedThisValue</h1>
+<h2>Bob Changed This</h2>
+<p>Hello again!</p>
+
+@{
+    value += 1;
+}
+
+@{
+    var name = "Jerry";
+    var day = DateTime.Now.DayOfWeek.ToString();
+
+    <p>Yo @name. Today is @day</p>
+    <p>Yo @name. Aren't  @(day)s the best?</p>
+}
+
+@{
+    var productId = 123;
+    <p>Product ID: ACME@(productId)</p>
+}
+
+
+<p>My Razor value after incrementation: @value.ToString("C")</p>
+
+@foreach (var car in Model)
+{
+    <p>@car.Id - @car.Make - @car.Model</p>
+}
+
+
+@helper pluralize(int count, string singular, string plural)
+{
+    @(count == 1 ? singular : plural);
+}
+
+@{
+    var crisesCount = 2;
+}
+<p>I have @crisesCount @pluralize(crisesCount, "crisis", "crises") </p>
+
+@*
+    This is a comment
+*@
+
+<p>
+    Mr. president, there
+    @if (crisesCount == 1)
+    {
+        @:is one crisis
+    }
+    else
+    {
+        <span> are @crisesCount crises</span>
+    }
+    you must deal with immediately!
+</p>
+
+<p>
+    @{ 
+        var test = false;
+        if (!test)
+        {
+            @:Display This
+            <span>
+                Now is the time for all good men 
+                to come to the aid of their
+                country.
+            </span>
+        }
+    }
+</p>
+
+@for (int i = 0; i < 10; i++)
+{
+    <p>@i</p>
+}
+
+<p>borbi@torbi.com</p>
+<p>@@borbi</p>
+
+<p>This is a change</p>
