@@ -50,7 +50,7 @@ namespace ACME.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductId,Name,Price")]Product product)
         {
-
+            /*
             if (string.IsNullOrEmpty(product.Name))
             {
                 ModelState.AddModelError("Name", "Name is a required field my lord.");
@@ -60,7 +60,7 @@ namespace ACME.Controllers
             {
                 ModelState.AddModelError("Price", "Please enter a valid price between $0.01 and $1000.00.");
             }
-
+            */
             if (ModelState.IsValid)
             {
                 product.ProductId = Guid.NewGuid();
